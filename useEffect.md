@@ -20,7 +20,7 @@ At the commit stage (render (create the component) vs commit(add component to DO
 ### returns:
 `undefined`
 
-## #### Removing unnecessary dependencies
+## Removing unnecessary dependencies
 https://react.dev/learn/removing-effect-dependencies#removing-unnecessary-dependencies
 
 ## Caveats
