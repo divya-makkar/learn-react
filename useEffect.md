@@ -10,6 +10,8 @@ Logic used to return JSX (markup) based on props and state.
 Nested functions inside components that do things rather than just calculate them. Event handlers contain “side effects” (they change the program’s state) caused by a specific user action (for example, a button click or typing).
 ### Effects
 Effects are similar to events, except that they let you specify side effects that are caused by rendering itself, rather than by a particular event.
+> [!NOTE]
+> Effects are what the `useEffect` hook is used for!
 
 ## When do effects run?
 At the commit stage (when a component is added to DOM). [see react lifecycle](https://react.dev/learn/render-and-commit)
