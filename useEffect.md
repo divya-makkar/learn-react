@@ -1,16 +1,20 @@
 # useEffect
+A hook that lets you synchronize a component with external systems
 
-## What are Events
+## Types of logic in a component
+### Render code
+Logic used to return JSX (markup) based on props and state.
+> [!IMPORTANT]
+> Render logic should be a pure function. I shouldn't update the state, only generate an output based on the given inputs (props/state).
+### Events
 Nested functions inside components that do things rather than just calculate them. Event handlers contain “side effects” (they change the program’s state) caused by a specific user action (for example, a button click or typing).
-
-## What are effects?
-Effects let you specify side effects that are caused by rendering itself, rather than by a particular event.
+### Effects
+Effects are similar to events, except that they let you specify side effects that are caused by rendering itself, rather than by a particular event.
 
 ## When do effects run?
-At the commit stage (render (create the component) vs commit(add component to DOM))
-[see react lifecycle](https://react.dev/learn/render-and-commit)
+At the commit stage (when a component is added to DOM). [see react lifecycle](https://react.dev/learn/render-and-commit)
 
-## Syntax
+## useEffect Syntax
 `useEffect(setup, dependencies?)`
 ### params:
 * setup: function with logic, can include a 'cleanup' function that runs before each time the effect re-runs with updated dependencies, and finally before the component unmounts
@@ -20,16 +24,23 @@ At the commit stage (render (create the component) vs commit(add component to DO
 ### returns:
 `undefined`
 
-## Removing unnecessary dependencies
-https://react.dev/learn/removing-effect-dependencies#removing-unnecessary-dependencies
-
-## Caveats
-https://react.dev/reference/react/useEffect#caveats
-
 ## When to use useEffect?
 * To connect with external systems (external servers, browser DOM, non-react libraries etc.)
 * To fetch data
+> [!IMPORTANT]
+> When fetching data inside a useEffect, always use a cleanup function to avoid race conditions (see useful reading links for more details) 
 * To control a non-react widget
 
+## When not to use useEffect
+* To transform data for rendering
+* To handle user events
+* To make expensive calculations, slow api calls etc. (in these cases `useMemo` should be used)
+* To update state based on props
+* To reset all state when a component prop changes
+* To synchronize state variables in different components
+
 ## Useful reading
-https://maxrozen.com/race-conditions-fetching-data-react-with-useeffect
+1. [useEffect caveats](https://react.dev/reference/react/useEffect#caveats)
+2. [Fixing Race Conditions in React with useEffect](https://maxrozen.com/race-conditions-fetching-data-react-with-useeffect)
+3. [You Might Not Need an Effect](https://react.dev/learn/you-might-not-need-an-effect)
+4. [Removing unnecessary dependencies](https://react.dev/learn/removing-effect-dependencies#removing-unnecessary-dependencies)
