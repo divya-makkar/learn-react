@@ -5,7 +5,9 @@ The process of caching results from a calculation is called `memoization`, which
 ## useMemo syntax
 `useMemo(calculateValue, dependencies)`
 ### params:
-* calculateValue: The function calculating the value that you want to cache. Should be a pure function, should take no arguments, and should return a value of any type
+* calculateValue: The function calculating the value that you want to cache
+[!NOTE]
+> Should be a pure function, should take no arguments, and should return a value of any type
 * dependencies: The list of all reactive values referenced inside of the calculateValue code 
 ### returns:
 * On first render: The result of calling `calculateValue` with no arguments
@@ -27,5 +29,12 @@ function TodoList({ todos, tab }) {
 * To skip expensive recalculations
 * To skip re-rendering of components
 * To memoize a dependency of another Hook
+[!NOTE]
+> To check whether we need to add useMemo or not, we have certain tools like React profiler, or performance web APIs to measure component performance
 
-## When not to use useMemo?
+## Before deciding to use useMemo:
+
+
+## Useful reading
+1. [React Profiler](https://legacy.reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html)
+2. [Performance APIs](https://developer.mozilla.org/en-US/docs/Web/API/Performance_API)
