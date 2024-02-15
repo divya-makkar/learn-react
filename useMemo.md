@@ -34,6 +34,7 @@ function TodoList({ todos, tab }) {
 
 ## Before deciding to use useMemo:
 
+## useMemo vs useCallback
 
 ## Useful reading
 1. [React Profiler](https://legacy.reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html)
